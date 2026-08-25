@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novel Construction | Tech</title>
+<meta name="description" content="Novel Construction builds its own field tools, starting with a real-time materials inventory and clock-out system used across job sites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221D17;
+    --ink-soft:#3A332A;
+    --paper:#EFE7D6;
+    --paper-2:#F7F2E7;
+    --brass:#B8863E;
+    --brass-light:#D9B978;
+    --brass-dark:#8C6529;
+    --brick:#93432A;
+    --stone:#6E665A;
+    --stone-line:#DCD2B9;
+    --hunter:#3D4A38;
+    --radius:2px;
+    --maxw:1180px;
+    font-size:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass-dark);
+    font-weight:500;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; color:var(--ink);}
+  h1{font-size:clamp(2.2rem, 5vw, 3.6rem); line-height:1.05; letter-spacing:-0.01em;}
+  h2{font-size:clamp(1.7rem, 3vw, 2.5rem); line-height:1.1;}
+  h3{font-size:1.15rem; line-height:1.3;}
+  p{margin:0;}
+  .lede{font-size:1.15rem; color:var(--ink-soft); max-width:56ch;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  section{padding:88px 0;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Inter'; font-weight:600; font-size:0.95rem;
+    padding:14px 26px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    text-decoration:none;
+    background:transparent;
+    transition:background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper-2); border-color:var(--ink);}
+  .btn-solid:hover{background:var(--brass-dark); border-color:var(--brass-dark); transform:translateY(-1px);}
+  .btn-line{border-color:var(--ink); color:var(--ink);}
+  .btn-line:hover{background:var(--ink); color:var(--paper-2); transform:translateY(-1px);}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,231,214,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--stone-line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:var(--maxw); margin:0 auto;}
+  .wordmark{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.01em; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:10px;}
+  .wordmark .mark{width:30px; height:30px; border:1.5px solid var(--brass); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:12px; color:var(--brass-dark);}
+  .navlinks{display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0;}
+  .navlinks a{text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink-soft); padding-bottom:4px; border-bottom:1px solid transparent;}
+  .navlinks a:hover{color:var(--ink); border-bottom-color:var(--brass);}
+  .navlinks a.current{color:var(--ink); border-bottom-color:var(--brass);}
+  .navphone{font-family:'IBM Plex Mono'; font-size:0.9rem; text-decoration:none; padding:9px 16px; border:1px solid var(--ink); border-radius:var(--radius);}
+  .navphone:hover{background:var(--ink); color:var(--paper-2);}
+  .navtoggle{display:none; background:none; border:1px solid var(--ink); border-radius:var(--radius); width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer;}
+  .navtoggle span, .navtoggle span::before, .navtoggle span::after{content:''; display:block; width:18px; height:1.5px; background:var(--ink); position:relative; transition:0.2s;}
+  .navtoggle span::before{position:absolute; top:-6px;}
+  .navtoggle span::after{position:absolute; top:6px;}
+
+  /* ===== HERO ===== */
+  .hero{padding:80px 0 60px;}
+  .hero-copy .eyebrow{margin-bottom:18px;}
+  .hero-copy h1{margin-bottom:22px;}
+  .hero-copy .lede{margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+
+  .plaque{
+    border:1px solid var(--brass);
+    background:var(--paper-2);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    position:relative;
+    display:inline-flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .plaque::before, .plaque::after{
+    content:''; position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--brass); top:9px;
+  }
+  .plaque::before{left:9px;}
+  .plaque::after{right:9px;}
+  .plaque-item{display:flex; flex-direction:column; gap:2px;}
+  .plaque-item .label{font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone);}
+  .plaque-item .val{font-family:'IBM Plex Mono'; font-size:13.5px; font-weight:500; color:var(--ink);}
+
+  /* ===== SECTION HEAD ===== */
+  .sec-head{max-width:640px; margin-bottom:56px;}
+  .sec-head .eyebrow{margin-bottom:14px;}
+  .sec-head p{margin-top:16px; color:var(--stone); font-size:1.02rem;}
+
+  /* ===== NUMBERED STEPS ===== */
+  .lifecycle{list-style:none; margin:0; padding:0; border-top:1px solid var(--stone-line);}
+  .lifecycle li{
+    display:grid; grid-template-columns:64px 1fr; gap:28px;
+    padding:28px 0; border-bottom:1px solid var(--stone-line);
+    align-items:start;
+  }
+  .lifecycle .n{font-family:'IBM Plex Mono'; font-size:0.95rem; color:var(--brass-dark); padding-top:4px;}
+  .lifecycle h3{margin-bottom:8px;}
+  .lifecycle p{color:var(--stone); max-width:56ch;}
+
+  /* ===== CAPABILITIES ===== */
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--stone-line); border:1px solid var(--stone-line);}
+  .why-card{background:var(--paper); padding:36px 34px;}
+  .why-card .idx{font-family:'IBM Plex Mono'; font-size:12px; color:var(--brass-dark); margin-bottom:16px; display:block;}
+  .why-card h3{margin-bottom:12px;}
+  .why-card p{color:var(--stone); font-size:0.95rem;}
+
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; letter-spacing:0.08em;
+    text-transform:uppercase; padding:4px 10px; border-radius:20px; margin-bottom:14px;
+  }
+  .tag-progress{background:var(--hunter); color:#E4EADF;}
+
+  /* ===== CONTACT STRIP ===== */
+  .contact{background:var(--ink); color:var(--paper-2);}
+  .contact .sec-head p{color:#C9C2B2;}
+  .contact .eyebrow{color:var(--brass-light);}
+  .contact .btn-line{border-color:var(--brass-light); color:var(--paper-2);}
+  .contact .btn-line:hover{background:var(--brass-light); color:var(--ink);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); border-top:1px solid rgba(217,185,120,0.22); padding:26px 0;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; color:#9A927F; font-family:'IBM Plex Mono'; font-size:12px;}
+  .foot-row a{color:#C9C2B2; text-decoration:none;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width: 880px){
+    .navlinks, .navphone{display:none;}
+    .navtoggle{display:flex;}
+    header.open .navlinks{display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--paper-2); padding:20px 32px; gap:18px; border-bottom:1px solid var(--stone-line);}
+    header.open .navphone{display:inline-flex; margin:0 32px 20px; justify-content:center; position:absolute; top:calc(100% + 210px); left:0; right:0;}
+    .why-grid{grid-template-columns:1fr;}
+    .lifecycle li{grid-template-columns:40px 1fr;}
+    section{padding:60px 0;}
+    .wrap{padding:0 20px;}
+    .nav{padding:18px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="nav">
+    <a href="index.html#top" class="wordmark"><span class="mark">N</span> Novel Construction</a>
+    <ul class="navlinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#jobsite">Job Site</a></li>
+      <li><a href="tech.html" class="current">Tech</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:info@novelconstruction.co" class="navphone">info@novelconstruction.co</a>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Built In-House</p>
+        <h1>Software built for how job sites actually run.</h1>
+        <p class="lede">Novel Construction builds its own field tools to solve real problems on hotel job sites, starting with tracking materials across every trade, every location, and every worker.</p>
+        <div class="hero-ctas">
+          <a href="#inventory" class="btn btn-solid">See how it works</a>
+          <a href="index.html#contact" class="btn btn-line">Get in touch</a>
+        </div>
+        <div class="plaque">
+          <div class="plaque-item"><span class="label">Status</span><span class="val">In development</span></div>
+          <div class="plaque-item"><span class="label">Stack</span><span class="val">Next.js · Supabase</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVENTORY APP -->
+  <section id="inventory">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Site Materials Inventory</p>
+        <h2>One app, every trade, every job site.</h2>
+        <p>Materials on site are organized by trade and location. When a worker uses something, they clock it out, and the record — what was taken, by whom, from where, and when — is permanent.</p>
+      </div>
+
+      <ol class="lifecycle reveal">
+        <li><span class="n">01</span><div><h3>Verified deliveries become inventory</h3><p>When a delivery arrives and gets checked against the order, that verified list seeds the starting inventory for the job site — no re-typing a count from scratch.</p></div></li>
+        <li><span class="n">02</span><div><h3>Tracked by trade and location</h3><p>Every material is tagged to a trade — electrical, plumbing, framing, and more — and a physical location on site, like a laydown yard or a specific storage box.</p></div></li>
+        <li><span class="n">03</span><div><h3>Workers clock out what they use</h3><p>A worker picks their name, selects the materials and quantities they're taking, and confirms. Inventory updates immediately, no separate paperwork.</p></div></li>
+        <li><span class="n">04</span><div><h3>A permanent record, every time</h3><p>Every clock-out and delivery is logged and filterable by trade, material, worker, or date — a running audit trail of the whole job site.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Capabilities</p>
+        <h2>What it does today.</h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <span class="idx mono">01</span>
+          <h3>Real-time inventory</h3>
+          <p>Stock levels update the moment a worker clocks material out, visible instantly from the office dashboard.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">02</span>
+          <h3>PIN-based field login</h3>
+          <p>Workers pick their name and enter a 4-digit PIN, so confirming identity is fast enough that it actually gets used on site.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">03</span>
+          <h3>Full audit trail</h3>
+          <p>Every clock-out and delivery is a permanent record — searchable by trade, material, worker, or date range.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">04</span>
+          <h3>Rough-in &amp; trim aware</h3>
+          <p>Materials that install in phases — like electrical, plumbing, and mechanical — are tracked by phase, since rough-in and trim often arrive in separate deliveries weeks apart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section id="status">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="tag tag-progress">In development</span>
+        <h2>Where it stands.</h2>
+        <p>The first working build is complete and currently being reviewed before rollout to job sites. Offline support for low-signal areas is the next thing being built, so a clock-out still gets recorded even without a signal on site.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Curious how we run job sites</p>
+        <h2>Happy to talk through it.</h2>
+        <p>Reach out if you'd like to hear more about the tools we build to keep hotel job sites organized and accountable.</p>
+      </div>
+      <a href="mailto:info@novelconstruction.co" class="btn btn-line">Email us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Novel Construction LLC</span>
+    <span id="year">© 2026 Novel Construction. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var header = document.getElementById('site-header');
+  toggle.addEventListener('click', function(){
+    var open = header.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ header.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Novel Construction. All rights reserved.';
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>

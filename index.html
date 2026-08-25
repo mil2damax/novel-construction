@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novel Construction | General Contractor | Hospitality Construction</title>
+<meta name="description" content="Novel Construction LLC is a general contractor building and renovating branded hotels by Hilton and IHG across North Carolina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221D17;
+    --ink-soft:#3A332A;
+    --paper:#EFE7D6;
+    --paper-2:#F7F2E7;
+    --brass:#B8863E;
+    --brass-light:#D9B978;
+    --brass-dark:#8C6529;
+    --brick:#93432A;
+    --stone:#6E665A;
+    --stone-line:#DCD2B9;
+    --hunter:#3D4A38;
+    --radius:2px;
+    --maxw:1180px;
+    font-size:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass-dark);
+    font-weight:500;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; color:var(--ink);}
+  h1{font-size:clamp(2.4rem, 5.4vw, 4.1rem); line-height:1.03; letter-spacing:-0.01em;}
+  h2{font-size:clamp(1.7rem, 3vw, 2.5rem); line-height:1.1;}
+  h3{font-size:1.15rem; line-height:1.3;}
+  p{margin:0;}
+  .lede{font-size:1.15rem; color:var(--ink-soft); max-width:44ch;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  section{padding:88px 0;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Inter'; font-weight:600; font-size:0.95rem;
+    padding:14px 26px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    text-decoration:none;
+    background:transparent;
+    transition:background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper-2); border-color:var(--ink);}
+  .btn-solid:hover{background:var(--brass-dark); border-color:var(--brass-dark); transform:translateY(-1px);}
+  .btn-line{border-color:var(--ink); color:var(--ink);}
+  .btn-line:hover{background:var(--ink); color:var(--paper-2); transform:translateY(-1px);}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,231,214,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--stone-line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:var(--maxw); margin:0 auto;}
+  .wordmark{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.01em; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:10px;}
+  .wordmark .mark{width:30px; height:30px; border:1.5px solid var(--brass); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:12px; color:var(--brass-dark);}
+  .navlinks{display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0;}
+  .navlinks a{text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink-soft); padding-bottom:4px; border-bottom:1px solid transparent;}
+  .navlinks a:hover{color:var(--ink); border-bottom-color:var(--brass);}
+  .navphone{font-family:'IBM Plex Mono'; font-size:0.9rem; text-decoration:none; padding:9px 16px; border:1px solid var(--ink); border-radius:var(--radius);}
+  .navphone:hover{background:var(--ink); color:var(--paper-2);}
+  .navtoggle{display:none; background:none; border:1px solid var(--ink); border-radius:var(--radius); width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer;}
+  .navtoggle span, .navtoggle span::before, .navtoggle span::after{content:''; display:block; width:18px; height:1.5px; background:var(--ink); position:relative; transition:0.2s;}
+  .navtoggle span::before{position:absolute; top:-6px;}
+  .navtoggle span::after{position:absolute; top:6px;}
+
+  /* ===== HERO ===== */
+  .hero{padding:80px 0 100px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;}
+  .hero-copy .eyebrow{margin-bottom:18px;}
+  .hero-copy h1{margin-bottom:22px;}
+  .hero-copy .lede{margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+
+  .plaque{
+    border:1px solid var(--brass);
+    background:var(--paper-2);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    position:relative;
+    display:inline-flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .plaque::before, .plaque::after{
+    content:''; position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--brass); top:9px;
+  }
+  .plaque::before{left:9px;}
+  .plaque::after{right:9px;}
+  .plaque-item{display:flex; flex-direction:column; gap:2px;}
+  .plaque-item .label{font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone);}
+  .plaque-item .val{font-family:'IBM Plex Mono'; font-size:13.5px; font-weight:500; color:var(--ink);}
+
+  .hero-art{display:flex; align-items:center; justify-content:center;}
+
+  @keyframes draftWidth{
+    0%, 8%{width:0;}
+    55%{width:140;}
+    78%{width:140;}
+    88%{width:0;}
+    100%{width:0;}
+  }
+  .draft-clip-rect{animation:draftWidth 5.5s ease-in-out infinite;}
+
+  /* ===== STAT STRIP ===== */
+  .stats{background:var(--ink); padding:0;}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); max-width:var(--maxw); margin:0 auto;}
+  .stat{padding:40px 30px; border-left:1px solid rgba(217,185,120,0.22);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Fraunces', serif; font-size:2.6rem; color:var(--brass-light); line-height:1;}
+  .stat .lbl{margin-top:10px; font-size:0.86rem; color:#C9C2B2; max-width:20ch;}
+
+  /* ===== SECTION HEAD ===== */
+  .sec-head{max-width:640px; margin-bottom:56px;}
+  .sec-head .eyebrow{margin-bottom:14px;}
+  .sec-head p{margin-top:16px; color:var(--stone); font-size:1.02rem;}
+
+  /* ===== LIFECYCLE (WHAT WE DO) ===== */
+  .lifecycle{list-style:none; margin:0; padding:0; border-top:1px solid var(--stone-line);}
+  .lifecycle li{
+    display:grid; grid-template-columns:64px 1fr; gap:28px;
+    padding:28px 0; border-bottom:1px solid var(--stone-line);
+    align-items:start;
+  }
+  .lifecycle .n{font-family:'IBM Plex Mono'; font-size:0.95rem; color:var(--brass-dark); padding-top:4px;}
+  .lifecycle h3{margin-bottom:8px;}
+  .lifecycle p{color:var(--stone); max-width:56ch;}
+
+  /* ===== PROJECT PLAQUE CARDS ===== */
+  .card-row{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  .card-row-3{grid-template-columns:repeat(3,1fr);}
+  .proj-card{
+    border:1px solid var(--ink); background:var(--paper-2);
+    border-radius:var(--radius); padding:26px 28px; position:relative;
+  }
+  .proj-card::before, .proj-card::after{content:''; position:absolute; width:5px; height:5px; border-radius:50%; background:var(--stone); top:10px;}
+  .proj-card::before{left:10px;} .proj-card::after{right:10px;}
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; letter-spacing:0.08em;
+    text-transform:uppercase; padding:4px 10px; border-radius:20px; margin-bottom:14px;
+  }
+  .tag-progress{background:var(--hunter); color:#E4EADF;}
+  .tag-upcoming{background:var(--stone-line); color:var(--stone);}
+  .tag-complete{background:transparent; color:var(--brass-dark); border:1px solid var(--brass);}
+  .proj-card h3{margin-bottom:6px;}
+  .proj-card .addr{color:var(--stone); font-size:0.92rem; font-family:'IBM Plex Mono';}
+
+  .sub-label{font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); margin:52px 0 20px;}
+
+  /* ===== TRACK RECORD LIST ===== */
+  .ledger{border-top:1px solid var(--stone-line);}
+  .ledger-group{margin-bottom:8px;}
+  .ledger-group h4{font-family:'Inter'; font-weight:600; font-size:0.95rem; padding:18px 0 6px; color:var(--ink-soft);}
+  .ledger-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:20px;
+    padding:14px 0; border-bottom:1px solid var(--stone-line);
+  }
+  .ledger-row .name{font-family:'Fraunces'; font-size:1.05rem;}
+  .ledger-row .role{font-family:'IBM Plex Mono'; font-size:11.5px; color:var(--stone); letter-spacing:0.04em; white-space:nowrap;}
+
+  /* ===== SCOPES / JOB SITE ===== */
+  .scope-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--stone-line); border:1px solid var(--stone-line);}
+  .scope{background:var(--paper); padding:34px 26px;}
+  .scope .icon{width:38px; height:38px; margin-bottom:20px;}
+  .scope h3{font-size:1.02rem; margin-bottom:8px;}
+  .scope p{font-size:0.9rem; color:var(--stone);}
+
+  /* ===== WHY NOVEL ===== */
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--stone-line); border:1px solid var(--stone-line);}
+  .why-card{background:var(--paper); padding:36px 34px;}
+  .why-card .idx{font-family:'IBM Plex Mono'; font-size:12px; color:var(--brass-dark); margin-bottom:16px; display:block;}
+  .why-card h3{margin-bottom:12px;}
+  .why-card p{color:var(--stone); font-size:0.95rem;}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--ink); color:var(--paper-2);}
+  .contact .sec-head p{color:#C9C2B2;}
+  .contact .eyebrow{color:var(--brass-light);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .info-row{display:flex; gap:16px; padding:18px 0; border-bottom:1px solid rgba(217,185,120,0.2);}
+  .info-row .k{font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); width:110px; flex-shrink:0; padding-top:2px;}
+  .info-row .v{font-size:1rem;}
+  .info-row a{text-decoration:none; border-bottom:1px solid var(--brass);}
+  .social-row{display:flex; gap:18px; margin-top:22px;}
+  .social-row a{font-family:'IBM Plex Mono'; font-size:0.85rem; text-decoration:none; color:var(--paper-2); border:1px solid rgba(217,185,120,0.35); padding:8px 14px; border-radius:20px;}
+  .social-row a:hover{background:var(--brass); color:var(--ink); border-color:var(--brass);}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field label{display:block; font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--brass-light); margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%; background:rgba(247,242,231,0.06); border:1px solid rgba(217,185,120,0.3);
+    border-radius:var(--radius); padding:12px 14px; color:var(--paper-2); font-family:'Inter'; font-size:0.95rem;
+  }
+  .field input::placeholder, .field textarea::placeholder{color:#8B8377;}
+  .field input:focus, .field textarea:focus{outline:2px solid var(--brass-light); outline-offset:1px;}
+  .form-note{font-size:0.8rem; color:#9A927F; font-family:'IBM Plex Mono'; margin-top:2px;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); border-top:1px solid rgba(217,185,120,0.22); padding:26px 0;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; color:#9A927F; font-family:'IBM Plex Mono'; font-size:12px;}
+  .foot-row a{color:#C9C2B2; text-decoration:none;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width: 880px){
+    .navlinks, .navphone{display:none;}
+    .navtoggle{display:flex;}
+    header.open .navlinks{display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--paper-2); padding:20px 32px; gap:18px; border-bottom:1px solid var(--stone-line);}
+    header.open .navphone{display:inline-flex; margin:0 32px 20px; justify-content:center; position:absolute; top:calc(100% + 210px); left:0; right:0;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .card-row, .contact-grid, .why-grid{grid-template-columns:1fr;}
+    .scope-grid{grid-template-columns:repeat(2,1fr);}
+    .lifecycle li{grid-template-columns:40px 1fr;}
+    section{padding:60px 0;}
+    .wrap{padding:0 20px;}
+    .nav{padding:18px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="nav">
+    <a href="#top" class="wordmark"><span class="mark">N</span> Novel Construction</a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#jobsite">Job Site</a></li>
+      <li><a href="tech.html">Tech</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:info@novelconstruction.co" class="navphone">info@novelconstruction.co</a>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">General Contractor · Hospitality Construction</p>
+        <h1>From groundbreaking to grand opening.</h1>
+        <p class="lede">Novel Construction is a Raleigh based general contractor building and renovating branded hotels by Hilton and IHG across North Carolina.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-solid">View our projects</a>
+          <a href="mailto:info@novelconstruction.co" class="btn btn-line">Email us</a>
+        </div>
+        <div class="plaque">
+          <div class="plaque-item"><span class="label">Specialty</span><span class="val">Hospitality construction</span></div>
+          <div class="plaque-item"><span class="label">Service area</span><span class="val">North Carolina</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg width="360" height="420" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="bpGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#221D17" stroke-width="0.5" opacity="0.16"/>
+            </pattern>
+            <clipPath id="draftClip">
+              <rect class="draft-clip-rect" x="110" y="182" width="0" height="85"/>
+            </clipPath>
+          </defs>
+
+          <rect x="0" y="0" width="360" height="420" fill="url(#bpGrid)"/>
+          <g stroke="#221D17" stroke-width="0.7" opacity="0.26">
+            <line x1="0" y1="100" x2="360" y2="100"/>
+            <line x1="0" y1="200" x2="360" y2="200"/>
+            <line x1="0" y1="300" x2="360" y2="300"/>
+            <line x1="90" y1="0" x2="90" y2="420"/>
+            <line x1="180" y1="0" x2="180" y2="420"/>
+            <line x1="270" y1="0" x2="270" y2="420"/>
+          </g>
+
+          <!-- dimension lines -->
+          <g stroke="#221D17" stroke-width="1" opacity="0.75">
+            <line x1="70" y1="52" x2="290" y2="52"/>
+            <line x1="65" y1="57" x2="75" y2="47"/>
+            <line x1="285" y1="57" x2="295" y2="47"/>
+            <line x1="40" y1="92" x2="40" y2="352"/>
+            <line x1="35" y1="97" x2="45" y2="87"/>
+            <line x1="35" y1="357" x2="45" y2="347"/>
+          </g>
+
+          <!-- compass rose -->
+          <path d="M321 68 L327 84 L343 90 L327 96 L321 112 L315 96 L299 90 L315 84 Z" stroke="#B8863E" stroke-width="1.2" opacity="0.9"/>
+          <circle cx="321" cy="90" r="2" fill="#B8863E"/>
+
+          <!-- brass cornerstone plaque -->
+          <rect x="90" y="150" width="180" height="140" stroke="#B8863E" stroke-width="1.6"/>
+          <rect x="98" y="158" width="164" height="124" stroke="#B8863E" stroke-width="0.8"/>
+          <circle cx="98" cy="158" r="2.5" fill="#B8863E"/>
+          <circle cx="262" cy="158" r="2.5" fill="#B8863E"/>
+          <circle cx="98" cy="282" r="2.5" fill="#B8863E"/>
+          <circle cx="262" cy="282" r="2.5" fill="#B8863E"/>
+
+          <!-- floor-plan fragment, revealed as if being actively drafted -->
+          <g clip-path="url(#draftClip)">
+            <line x1="120" y1="190" x2="160" y2="190" stroke="#221D17" stroke-width="1.6"/>
+            <line x1="190" y1="190" x2="240" y2="190" stroke="#221D17" stroke-width="1.6"/>
+            <line x1="120" y1="190" x2="120" y2="260" stroke="#221D17" stroke-width="1.6"/>
+            <line x1="160" y1="190" x2="160" y2="220" stroke="#221D17" stroke-width="1.4"/>
+            <path d="M190 190 A30 30 0 0 1 160 220" stroke="#221D17" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="112" y1="260" x2="128" y2="260" stroke="#221D17" stroke-width="0.8"/>
+            <rect x="140" y="248" width="20" height="5" fill="#221D17"/>
+            <rect x="160" y="248" width="20" height="5" fill="none" stroke="#221D17" stroke-width="0.8"/>
+            <rect x="180" y="248" width="20" height="5" fill="#221D17"/>
+            <rect x="200" y="248" width="20" height="5" fill="none" stroke="#221D17" stroke-width="0.8"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <section class="stats">
+    <div class="stat-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">Hotel brands under construction now</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Branded properties completed</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Full 10-year PIP delivered</div></div>
+      <div class="stat"><div class="num">2019</div><div class="lbl">Company founded</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT / LIFECYCLE -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">How we run a project</p>
+        <h2>Full lifecycle, one team.</h2>
+        <p>Estimating, procurement, subcontractor management, compliance, and project administration — held under a single point of contact from bid to closeout.</p>
+      </div>
+      <ol class="lifecycle reveal">
+        <li><span class="n">01</span><div><h3>Estimating &amp; preconstruction</h3><p>Scope development, budgeting, and bid-level takeoffs before a shovel goes in the ground.</p></div></li>
+        <li><span class="n">02</span><div><h3>Procurement &amp; materials</h3><p>Sourcing and tracking materials across trades — from EIFS panels to electrical gear — against brand and code specs.</p></div></li>
+        <li><span class="n">03</span><div><h3>Subcontractor management</h3><p>Scheduling and coordinating trade partners, holding every subcontract to its terms and schedule, staying accountable, and building strong, sustainable relationships.</p></div></li>
+        <li><span class="n">04</span><div><h3>Compliance &amp; brand standards</h3><p>Verifying every install — outlets, fixtures, finishes — against brand standards and IBC.</p></div></li>
+        <li><span class="n">05</span><div><h3>Project administration</h3><p>Documentation, inspections, and closeout, so ownership groups have a clean record start to finish.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Current work</p>
+        <h2>Projects underway.</h2>
+      </div>
+
+      <div class="card-row reveal">
+        <div class="proj-card">
+          <span class="tag tag-progress">In progress</span>
+          <h3>Tru by Hilton — Durham, NC</h3>
+          <p class="addr">1129 Slater Rd, Durham, NC 27703</p>
+        </div>
+        <div class="proj-card">
+          <span class="tag tag-progress">In progress</span>
+          <h3>Hampton Inn — Albemarle, NC</h3>
+          <p class="addr">401 NC Hwy 24/27 Bypass East, Albemarle, NC 28001</p>
+        </div>
+      </div>
+
+      <p class="sub-label">Upcoming</p>
+      <div class="card-row card-row-3 reveal">
+        <div class="proj-card">
+          <span class="tag tag-upcoming">Upcoming</span>
+          <h3>Homewood Suites — Brier Creek, NC</h3>
+        </div>
+        <div class="proj-card">
+          <span class="tag tag-upcoming">Upcoming</span>
+          <h3>Homewood Suites — Raleigh North, NC</h3>
+        </div>
+        <div class="proj-card">
+          <span class="tag tag-upcoming">Upcoming</span>
+          <h3>Home2 Suites</h3>
+        </div>
+      </div>
+
+      <p class="sub-label">Track record</p>
+      <div class="ledger reveal">
+        <div class="ledger-group">
+          <h4 style="display:flex; align-items:center; gap:10px;">General Contractor <span class="tag tag-complete" style="margin:0;">Complete</span></h4>
+          <div class="ledger-row"><span class="name">Tru by Hilton — Wake Forest, NC</span><span class="role">GC</span></div>
+          <div class="ledger-row"><span class="name">Home2 Suites — Raleigh, NC</span><span class="role">GC</span></div>
+        </div>
+        <div class="ledger-group">
+          <h4 style="display:flex; align-items:center; gap:10px;">Construction Management <span class="tag tag-complete" style="margin:0;">Complete</span></h4>
+          <div class="ledger-row"><span class="name">Home2 Suites — Rock Hill, SC</span><span class="role">CM · FS</span></div>
+          <div class="ledger-row"><span class="name">Candlewood Suites — Wake Forest, NC</span><span class="role">CM · FS</span></div>
+          <div class="ledger-row"><span class="name">Sleep Inn — Henderson, NC</span><span class="role">CM</span></div>
+          <div class="ledger-row"><span class="name">Country Inn &amp; Suites — Fort Wayne, IN</span><span class="role">CM · FS</span></div>
+          <div class="ledger-row"><span class="name">Comfort Inn — Creedmoor, NC</span><span class="role">CM</span></div>
+          <div class="ledger-row"><span class="name">Budget Host Inn — Henderson, NC</span><span class="role">CM</span></div>
+        </div>
+        <div class="ledger-group">
+          <h4 style="display:flex; align-items:center; gap:10px;">Owner's Representation <span class="tag tag-complete" style="margin:0;">Complete</span></h4>
+          <div class="ledger-row"><span class="name">Home2 Suites — Rock Hill, SC</span><span class="role">OR</span></div>
+          <div class="ledger-row"><span class="name">Country Inn &amp; Suites — Fort Wayne, IN</span><span class="role">OR</span></div>
+        </div>
+        <div class="ledger-group">
+          <h4 style="display:flex; align-items:center; gap:10px;">Property Improvement Plan <span class="tag tag-complete" style="margin:0;">Complete</span></h4>
+          <div class="ledger-row"><span class="name">Candlewood Suites — Wake Forest, NC</span><span class="role">10-YEAR PIP</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOB SITE / SCOPES -->
+  <section id="jobsite">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">From the job site</p>
+        <h2>Scopes we run in-house and in the field.</h2>
+        <p>A look at the trades our teams touch most on active hotel builds. Photography from current jobs coming soon.</p>
+      </div>
+      <div class="scope-grid reveal">
+        <div class="scope">
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M22 4 L10 22 H18 L16 36 L30 16 H21 Z" stroke="#B8863E" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <h3>Electrical</h3>
+          <p>Rough-in through trim, verified against NEC and brand receptacle and fixture specs.</p>
+        </div>
+        <div class="scope">
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="28" height="24" stroke="#B8863E" stroke-width="1.4"/><line x1="6" y1="18" x2="34" y2="18" stroke="#B8863E" stroke-width="1"/><line x1="6" y1="26" x2="34" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="14" y1="10" x2="14" y2="34" stroke="#B8863E" stroke-width="0.8"/><line x1="26" y1="10" x2="26" y2="34" stroke="#B8863E" stroke-width="0.8"/></svg>
+          <h3>EIFS &amp; exterior</h3>
+          <p>Exterior finish systems and building envelope work coordinated with material suppliers.</p>
+        </div>
+        <div class="scope">
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="6" stroke="#B8863E" stroke-width="1.4"/><path d="M20 20 V32 M14 32 H26" stroke="#B8863E" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>Plumbing &amp; bath trim</h3>
+          <p>Fixture and trim installs checked against flow-rate and finish requirements, room by room.</p>
+        </div>
+        <div class="scope">
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="7" y="6" width="26" height="28" stroke="#B8863E" stroke-width="1.4"/><line x1="20" y1="6" x2="20" y2="34" stroke="#B8863E" stroke-width="1"/><line x1="7" y1="20" x2="33" y2="20" stroke="#B8863E" stroke-width="1"/></svg>
+          <h3>Window installation</h3>
+          <p>Building envelope closure coordinated tightly with framing and exterior finish schedules.</p>
+        </div>
+        <div class="scope">
+          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="28" height="14" rx="2" stroke="#B8863E" stroke-width="1.4"/><line x1="10" y1="16" x2="14" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="16" y1="16" x2="20" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="22" y1="16" x2="26" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="28" y1="16" x2="32" y2="26" stroke="#B8863E" stroke-width="1"/></svg>
+          <h3>HVAC</h3>
+          <p>Mechanical systems coordinated with the building envelope for guest room comfort and code-required ventilation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOVEL -->
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Why Novel</p>
+        <h2>What ownership groups get from us.</h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <span class="idx mono">01</span>
+          <h3>Licensed &amp; compliance-first</h3>
+          <p>Novel Construction is a licensed North Carolina general contractor. Every new venture — from subcontractor agreements to trade licensing — is structured for compliance before it's structured for speed.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">02</span>
+          <h3>Brand standards, verified line by line</h3>
+          <p>Fixtures, finishes, and rough-in are checked line by line against brand standards and the International Building Code.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">03</span>
+          <h3>Documentation-forward</h3>
+          <p>Site conditions, subcontractor communications, and inspections are documented as they happen — protecting the schedule and the owner.</p>
+        </div>
+        <div class="why-card">
+          <span class="idx mono">04</span>
+          <h3>One point of contact, start to finish</h3>
+          <p>Estimating, procurement, trade coordination, and closeout run under a single team, so ownership groups aren't managing the gaps between contractors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Questions &amp; estimates</p>
+        <h2>Let's talk about your project.</h2>
+        <p>We'd love to hear from you — reach out at your convenience so we can discuss scope, timeline, and fit.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="info-row"><span class="k">Address</span><span class="v">14460 Falls of Neuse Rd, Ste 149-121<br>Raleigh, NC 27614</span></div>
+          <div class="info-row"><span class="k">Email</span><span class="v"><a href="mailto:info@novelconstruction.co">info@novelconstruction.co</a></span></div>
+          <div class="info-row"><span class="k">Hours</span><span class="v">Monday – Sunday, 8am – 5pm</span></div>
+          <div class="social-row">
+            <a href="https://www.instagram.com/novelconstructionllc/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.linkedin.com/company/novelconstruction" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <form onsubmit="return false;">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" placeholder="Your name"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@company.com"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="(919) 555-0100"></div>
+          <div class="field"><label for="f-msg">Project details</label><textarea id="f-msg" rows="3" placeholder="Property, brand, and scope"></textarea></div>
+          <button type="submit" class="btn btn-solid" style="align-self:flex-start;">Send inquiry</button>
+          <p class="form-note">Form UI only — connect this to a backend (GoDaddy form service, Formspree, CRM) before publishing.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Novel Construction LLC</span>
+    <span id="year">© 2026 Novel Construction. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var header = document.getElementById('site-header');
+  toggle.addEventListener('click', function(){
+    var open = header.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ header.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Novel Construction. All rights reserved.';
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
