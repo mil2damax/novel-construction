@@ -26,7 +26,7 @@
     font-size:16px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:84px;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -57,7 +57,7 @@
   p{margin:0;}
   .lede{font-size:1.15rem; color:var(--ink-soft); max-width:44ch;}
   .mono{font-family:'IBM Plex Mono', monospace;}
-  section{padding:40px 0;}
+  section{padding:24px 0;}
   .btn{
     display:inline-flex; align-items:center; gap:10px;
     font-family:'Inter'; font-weight:600; font-size:0.95rem;
@@ -94,7 +94,7 @@
   .navtoggle span::after{position:absolute; top:6px;}
 
   /* ===== HERO ===== */
-  .hero{padding:48px 0 40px;}
+  .hero{padding:40px 0 24px;}
   .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;}
   .hero-copy .eyebrow{margin-bottom:18px;}
   .hero-copy h1{margin-bottom:22px;}
@@ -141,7 +141,7 @@
   .stat .lbl{margin-top:10px; font-size:0.86rem; color:#C9C2B2; max-width:20ch;}
 
   /* ===== SECTION HEAD ===== */
-  .sec-head{max-width:640px; margin-bottom:36px;}
+  .sec-head{max-width:640px; margin-bottom:26px;}
   .sec-head .eyebrow{margin-bottom:14px;}
   .sec-head p{margin-top:16px; color:var(--stone); font-size:1.02rem;}
 
@@ -197,6 +197,7 @@
 
   /* ===== WHY NOVEL ===== */
   .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--stone-line); border:1px solid var(--stone-line);}
+  .why-grid-3{grid-template-columns:repeat(3,1fr);}
   .why-card{background:var(--paper); padding:26px 28px;}
   .why-card .idx{font-family:'IBM Plex Mono'; font-size:12px; color:var(--brass-dark); margin-bottom:16px; display:block;}
   .why-card h3{margin-bottom:12px;}
@@ -206,6 +207,8 @@
   .contact{background:var(--ink); color:var(--paper-2);}
   .contact .sec-head p{color:#C9C2B2;}
   .contact .eyebrow{color:var(--brass-light);}
+  .contact .btn-line{border-color:var(--brass-light); color:var(--paper-2);}
+  .contact .btn-line:hover{background:var(--brass-light); color:var(--ink);}
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px;}
   .info-row{display:flex; gap:16px; padding:13px 0; border-bottom:1px solid rgba(217,185,120,0.2);}
   .info-row .k{font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); width:110px; flex-shrink:0; padding-top:2px;}
@@ -224,7 +227,8 @@
   .field input::placeholder, .field textarea::placeholder{color:#8B8377;}
   .field input:focus, .field textarea:focus{outline:2px solid var(--brass-light); outline-offset:1px;}
   .form-note{font-size:0.8rem; color:#9A927F; font-family:'IBM Plex Mono'; margin-top:2px;}
-  .ms-form-wrap{background:var(--paper-2); border-radius:var(--radius); padding:8px; border:1px solid rgba(217,185,120,0.25);}
+  .ms-form-wrap{background:var(--paper-2); border-radius:var(--radius); padding:32px; border:1px solid rgba(217,185,120,0.25);}
+  .ms-form-wrap p{color:var(--ink-soft); margin-bottom:22px;}
 
   /* ===== FOOTER ===== */
   footer{background:var(--ink); border-top:1px solid rgba(217,185,120,0.22); padding:26px 0;}
@@ -246,7 +250,7 @@
     .card-row, .contact-grid, .why-grid{grid-template-columns:1fr;}
     .scope-grid{grid-template-columns:repeat(2,1fr);}
     .lifecycle li{grid-template-columns:40px 1fr;}
-    section{padding:28px 0;}
+    section{padding:18px 0;}
     .wrap{padding:0 20px;}
     .nav{padding:18px 20px;}
   }
@@ -260,7 +264,7 @@
     <ul class="navlinks">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#jobsite">Job Site</a></li>
+      <li><a href="#approach">Approach</a></li>
       <li><a href="tech.html">Tech</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -364,13 +368,13 @@
       <div class="sec-head reveal">
         <p class="eyebrow">How we run a project</p>
         <h2>Full lifecycle, one team.</h2>
-        <p>Estimating, procurement, subcontractor management, compliance, and project administration — held under a single point of contact from bid to closeout.</p>
+        <p>Estimating, procurement, subcontractor management, compliance, and project administration, all held under a single point of contact from bid to closeout.</p>
       </div>
       <ol class="lifecycle reveal">
         <li><span class="n">01</span><div><h3>Estimating &amp; preconstruction</h3><p>Scope development, budgeting, and bid-level takeoffs before a shovel goes in the ground.</p></div></li>
-        <li><span class="n">02</span><div><h3>Procurement &amp; materials</h3><p>Sourcing and tracking materials across trades — from EIFS panels to electrical gear — against brand and code specs.</p></div></li>
+        <li><span class="n">02</span><div><h3>Procurement &amp; materials</h3><p>Sourcing and tracking materials across trades, from EIFS panels to electrical gear, against brand and code specs.</p></div></li>
         <li><span class="n">03</span><div><h3>Subcontractor management</h3><p>Scheduling and coordinating trade partners, holding every subcontract to its terms and schedule, staying accountable, and building strong, sustainable relationships.</p></div></li>
-        <li><span class="n">04</span><div><h3>Compliance &amp; brand standards</h3><p>Verifying every install — outlets, fixtures, finishes — against brand standards and IBC.</p></div></li>
+        <li><span class="n">04</span><div><h3>Compliance &amp; brand standards</h3><p>Verifying every install, from outlets and fixtures to finishes, against brand standards and IBC.</p></div></li>
         <li><span class="n">05</span><div><h3>Project administration</h3><p>Documentation, inspections, and closeout, so ownership groups have a clean record start to finish.</p></div></li>
       </ol>
     </div>
@@ -442,39 +446,29 @@
     </div>
   </section>
 
-  <!-- JOB SITE / SCOPES -->
-  <section id="jobsite">
+  <!-- APPROACH -->
+  <section id="approach">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">From the job site</p>
-        <h2>Scopes we run in-house and in the field.</h2>
-        <p>A look at the trades our teams touch most on active hotel builds. Photography from current jobs coming soon.</p>
+        <p class="eyebrow">Our Approach</p>
+        <h2>Care, ownership, and a methodical pursuit of quality.</h2>
+        <p>That standard shapes every decision on a job site, including how materials are sourced. Every order is checked against spec before it's placed, and long-standing supplier relationships are used with purpose, so the outcome is never subpar materials or a subpar build.</p>
       </div>
-      <div class="scope-grid reveal">
-        <div class="scope">
-          <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M22 4 L10 22 H18 L16 36 L30 16 H21 Z" stroke="#B8863E" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          <h3>Electrical</h3>
-          <p>Rough-in through trim, verified against NEC and brand receptacle and fixture specs.</p>
+      <div class="why-grid why-grid-3 reveal">
+        <div class="why-card">
+          <span class="idx mono">01</span>
+          <h3>Verified before it's ordered</h3>
+          <p>Every quote is checked against spec and brand standards before a PO goes out, catching substitutions and quantity errors before they become field problems.</p>
         </div>
-        <div class="scope">
-          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="28" height="24" stroke="#B8863E" stroke-width="1.4"/><line x1="6" y1="18" x2="34" y2="18" stroke="#B8863E" stroke-width="1"/><line x1="6" y1="26" x2="34" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="14" y1="10" x2="14" y2="34" stroke="#B8863E" stroke-width="0.8"/><line x1="26" y1="10" x2="26" y2="34" stroke="#B8863E" stroke-width="0.8"/></svg>
-          <h3>EIFS &amp; exterior</h3>
-          <p>Exterior finish systems and building envelope work coordinated with material suppliers.</p>
+        <div class="why-card">
+          <span class="idx mono">02</span>
+          <h3>Relationships that lower cost</h3>
+          <p>Established accounts across big-box and specialty distributors mean better pricing and priority access on the materials that matter.</p>
         </div>
-        <div class="scope">
-          <svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="6" stroke="#B8863E" stroke-width="1.4"/><path d="M20 20 V32 M14 32 H26" stroke="#B8863E" stroke-width="1.4" stroke-linecap="round"/></svg>
-          <h3>Plumbing &amp; bath trim</h3>
-          <p>Fixture and trim installs checked against flow-rate and finish requirements, room by room.</p>
-        </div>
-        <div class="scope">
-          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="7" y="6" width="26" height="28" stroke="#B8863E" stroke-width="1.4"/><line x1="20" y1="6" x2="20" y2="34" stroke="#B8863E" stroke-width="1"/><line x1="7" y1="20" x2="33" y2="20" stroke="#B8863E" stroke-width="1"/></svg>
-          <h3>Window installation</h3>
-          <p>Building envelope closure coordinated tightly with framing and exterior finish schedules.</p>
-        </div>
-        <div class="scope">
-          <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="28" height="14" rx="2" stroke="#B8863E" stroke-width="1.4"/><line x1="10" y1="16" x2="14" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="16" y1="16" x2="20" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="22" y1="16" x2="26" y2="26" stroke="#B8863E" stroke-width="1"/><line x1="28" y1="16" x2="32" y2="26" stroke="#B8863E" stroke-width="1"/></svg>
-          <h3>HVAC</h3>
-          <p>Mechanical systems coordinated with the building envelope for guest room comfort and code-required ventilation.</p>
+        <div class="why-card">
+          <span class="idx mono">03</span>
+          <h3>One verified list, start to finish</h3>
+          <p>A delivery checked against the order becomes the starting inventory for the job site, so there's no guessing what's actually on hand.</p>
         </div>
       </div>
     </div>
@@ -491,7 +485,7 @@
         <div class="why-card">
           <span class="idx mono">01</span>
           <h3>Licensed &amp; compliance-first</h3>
-          <p>Novel Construction is a licensed North Carolina general contractor. Every new venture — from subcontractor agreements to trade licensing — is structured for compliance before it's structured for speed.</p>
+          <p>Novel Construction is a licensed North Carolina general contractor. Every new venture, from subcontractor agreements to trade licensing, is structured for compliance before it's structured for speed.</p>
         </div>
         <div class="why-card">
           <span class="idx mono">02</span>
@@ -501,12 +495,17 @@
         <div class="why-card">
           <span class="idx mono">03</span>
           <h3>Documentation-forward</h3>
-          <p>Site conditions, subcontractor communications, and inspections are documented as they happen — protecting the schedule and the owner.</p>
+          <p>Site conditions, subcontractor communications, and inspections are documented as they happen, protecting the schedule and the owner.</p>
         </div>
         <div class="why-card">
           <span class="idx mono">04</span>
           <h3>One point of contact, start to finish</h3>
           <p>Estimating, procurement, trade coordination, and closeout run under a single team, so ownership groups aren't managing the gaps between contractors.</p>
+        </div>
+        <div class="why-card" style="grid-column:1 / -1;">
+          <span class="idx mono">05</span>
+          <h3>Built with an owner's eye</h3>
+          <p>Having served as Owner's Representative on past projects, that same perspective carries into every build, so owners and their managers have less to worry about.</p>
         </div>
       </div>
     </div>
@@ -516,9 +515,9 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Questions &amp; estimates</p>
+        <p class="eyebrow">Get in touch</p>
         <h2>Let's talk about your project.</h2>
-        <p>We'd love to hear from you — reach out at your convenience so we can discuss scope, timeline, and fit.</p>
+        <p>We'd love to hear from you. Reach out at your convenience so we can discuss scope, timeline, and fit.</p>
       </div>
       <div class="contact-grid">
         <div class="reveal">
@@ -531,8 +530,9 @@
           </div>
         </div>
         <div class="ms-form-wrap">
-          <iframe width="100%" height="500px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=-ue6nj1gGk-IWnuODFX7a1J3ttoXQ09OshOzsSlFdlhUQVhGODMwODJKQUlJSFBEQkc5Vlc4QU04VS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh; border-radius:var(--radius);" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
-          </iframe>
+          <h3 style="margin-bottom:12px;">Let's have a conversation</h3>
+          <p>Tell us about your project, and we'll take it from there.</p>
+          <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=-ue6nj1gGk-IWnuODFX7a1J3ttoXQ09OshOzsSlFdlhUQVhGODMwODJKQUlJSFBEQkc5Vlc4QU04VS4u" target="_blank" rel="noopener" class="btn btn-solid">Start the conversation</a>
         </div>
       </div>
     </div>
